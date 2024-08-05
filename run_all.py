@@ -443,7 +443,7 @@ def replace_duplicates(children):
                     if sequence not in children:
                         # for some reason, having this calculation and check right after getting the sequence stalled the program. 
                         # I suspect it's because the mfe does a popen command which laggs behind as python's random is too quick
-                        sec_seq = mfe(sequence, package='eternafold')
+                        sec_seq = mfe(sequence)#, package='eternafold')
                         # make sure there is atleast 1 connection in the secondary structure
                         if sec_seq.count("(") > 0:
                             break

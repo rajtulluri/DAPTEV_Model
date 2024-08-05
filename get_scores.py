@@ -85,7 +85,7 @@ class Predictions:
         tqdm.write(f"{text_colour}Beginning secondary structure predictions")
         for sequence in start_data:
             # get the secondary structure
-            sec_seq = mfe(sequence, package='eternafold')
+            sec_seq = mfe(sequence)#, package='eternafold')
             all_data.append([sequence, sec_seq])
         tqdm.write(f"{text_colour}Finished secondary structure prediction. Process took {time.time() - start_time} seconds for {datasize} sequences\nBeginning tertiary structure prediction.\n")
         
