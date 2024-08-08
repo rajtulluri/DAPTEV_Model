@@ -18,7 +18,7 @@ from tensorboardX import SummaryWriter
 '''---User Parameters---'''
 # regression style choice: 0 = BCE (uses score threshold), 1 = RMSE (does not use score threshold), 2 = MSE (does not use score threshold)
 REGRESS_CHOICE = 0
-SAMPLE_POP_SIZE = 100
+SAMPLE_POP_SIZE = 1000
 # 5 for test, 10 for thesis, 1 for checking VAE only
 GENERATIONS = 5
 RUNS = 1
@@ -472,7 +472,7 @@ def score_sequences(predictor, data_list, sorted_parents, run, current_gen, scor
     write_sequence_data(pre_dir, run_n_gen+OUTPUT_TYPE, temp_df)
 
     dup_stats = replace_duplicates(data_list)   
-    
+    print(data_list, sorted_parents)
     if VAE_ONLY:
         global data_rem
         data = data_rem.head(SAMPLE_POP_SIZE)
@@ -595,7 +595,7 @@ for line in parameters:
 
 # get data
 # read_in_data = pd.read_csv("data/start/Output_DataSize_2000_Min_20_Max_40_GCAmnt_50_CPUPercent_75_Uncon_False_Seed_200_Covid.csv",  index_col=0)
-dataset_csv = pd.read_csv("data/start/Output_DataSize_12000_Min_20_Max_40_GCAmnt_50_CPUPercent_75_Uncon_False_Seed_200_Covid.csv",  index_col=0)
+dataset_csv = pd.read_csv("data/start/Output_DataSize_50000_Min_20_Max_40_GCAmnt_50_CPUPercent_50_Uncon_False_Seed_200_Theophylline.csv",  index_col=0)
 # list to store the sequences generated over time
 running_gen_seq = []
 # list to store the dataframes of sequences from the most recent parameter set (used for reloading data) 
